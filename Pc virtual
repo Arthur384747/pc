@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Windows Virtual</title>
+<style>
+*{box-sizing:border-box}body{margin:0;overflow:hidden;font-family:Arial;background:#0879c9;color:white}
+#pc{height:100vh;background:linear-gradient(135deg,#0879c9,#043b78);padding:20px}
+.icon{width:80px;text-align:center;padding:10px;cursor:pointer}.icon:hover{background:#ffffff22}
+#bar{position:fixed;bottom:0;left:0;width:100%;height:50px;background:#222d;display:flex;align-items:center}
+button{background:none;border:0;color:white;font-size:20px;padding:12px;cursor:pointer}
+#start{display:none;position:fixed;bottom:50px;left:0;width:300px;height:400px;background:#222e;padding:20px}
+.win{display:none;position:absolute;top:80px;left:150px;width:600px;height:400px;background:white;color:#111;box-shadow:0 10px 30px #0008}
+.title{height:35px;background:#eee;padding:9px}.close{float:right;color:#111;padding:0}
+textarea{width:100%;height:calc(100% - 35px);border:0;outline:0;padding:15px;font-size:16px}
+</style>
+</head>
+<body>
+<div id="pc">
+<div class="icon" ondblclick="openW('files')">📁<br>Arquivos</div>
+<div class="icon" ondblclick="openW('note')">📝<br>Bloco de Notas</div>
+</div>
+<div id="start"><h2>Iniciar</h2><p onclick="openW('files')">📁 Explorador</p><p onclick="openW('note')">📝 Bloco de Notas</p></div>
+<div id="files" class="win"><div class="title">📁 Explorador <button class="close" onclick="closeW('files')">✕</button></div><h2 style="padding:20px">Este Computador 💻</h2></div>
+<div id="note" class="win"><div class="title">📝 Bloco de Notas <button class="close" onclick="closeW('note')">✕</button></div><textarea placeholder="Digite aqui..."></textarea></div>
+<div id="bar"><button onclick="start()">⊞</button><button onclick="openW('files')">📁</button><button onclick="openW('note')">📝</button><span id="clock"></span></div>
+<script>
+function start(){let s=document.getElementById('start');s.style.display=s.style.display=='block'?'none':'block'}
+function openW(id){document.getElementById(id).style.display='block';document.getElementById('start').style.display='none'}
+function closeW(id){document.getElementById(id).style.display='none'}
+setInterval(()=>clock.innerHTML=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}),1000);
+</script>
+</body>
+</html>
